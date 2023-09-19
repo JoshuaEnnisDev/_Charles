@@ -3,13 +3,18 @@ from pgzrun import go
 WIDTH = 1000
 HEIGHT = 400
 
-kemo = Actor("dino")
-kemo.x = 100
-kemo.bottom = 400
+dino = Actor("dino")
+dino.x = 100
+dino.bottom = 400
 
 
 def draw():
-    kemo.draw()
+    screen.fill("blue")
+    dino.draw()
+
+
+def update():
+    dino.x = dino.x + 3
 
 
 go()

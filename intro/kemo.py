@@ -5,46 +5,41 @@ HEIGHT = 600
 
 dino = Actor("dino")
 dino.x = 100
-dino.bottom = 500
+dino.bottom = HEIGHT
+dino.gravity = 0
 
 cactus = Actor("cactus")
 cactus.x = 1100
-cactus.bottom = 500
-
-bg1 = Actor("_05_hill1")
-bg1.y = 200
-
-bg2 = Actor("_05_hill1")
-bg2.y = 200
+cactus.bottom = HEIGHT
 
 
 def draw():
-
-    screen.blit("_11_background", (0, 0))
-    bg1.draw()
-    screen.blit("_01_ground", (0, -710))
-    screen.blit("_08_clouds", (0, -1300))
+    screen.fill("teal")
     dino.draw()
     cactus.draw()
 
 
 def on_key_down():
     if keyboard.space:
-        dino.y = dino.y - 100
+        dino.gravity = -20
 
 
 # gets called 60 times a second
 def update():
+    
+    # jumping stuff
+    dino.gravity = dino.gravity + 1
+    dino.y = dino.y + dino.gravity
+    if dino.bottom >= HEIGHT:
+        dino.bottom = HEIGHT
+
+    # moving the cactus
     cactus.x = cactus.x - 2
     if cactus.x <= 0:
         cactus.x = 1100
     
-    bg2.left = bg1.right  
-    bg1.x -= 2
-    if bg1.right <= WIDTH:
-        bg1.left = 0
-
-    
-
+    # check for collision
+    if dino.colliderect(cactus):
+        print("ouch!")
 
 go()

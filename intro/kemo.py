@@ -26,7 +26,6 @@ def on_key_down():
 
 # gets called 60 times a second
 def update():
-    
     # jumping stuff
     dino.gravity = dino.gravity + 1
     dino.y = dino.y + dino.gravity
@@ -37,9 +36,10 @@ def update():
     cactus.x = cactus.x - 2
     if cactus.x <= 0:
         cactus.x = 1100
-    
+
     # check for collision
     if dino.colliderect(cactus):
-        print("ouch!")
+        print("ouch")
+
 
 go()

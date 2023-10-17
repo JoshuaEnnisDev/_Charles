@@ -3,20 +3,29 @@ from pgzrun import go
 WIDTH = 1000
 HEIGHT = 600
 
+# actors
+
+ground = Actor("grass1000")
+ground.bottom = HEIGHT
+
 dino = Actor("dino")
 dino.x = 100
-dino.bottom = HEIGHT
+dino.bottom = ground.top
 dino.gravity = 0
 
 cactus = Actor("cactus")
 cactus.x = 1100
 cactus.bottom = HEIGHT
 
+zombie = Actor("attack4")
+zombie.bottom = 399
+
 
 def draw():
     screen.fill("teal")
     dino.draw()
     cactus.draw()
+    ground.draw()
 
 
 def on_key_down():

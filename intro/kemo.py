@@ -4,13 +4,12 @@ WIDTH = 1000
 HEIGHT = 600
 
 # actors
-
 ground = Actor("grass1000")
 ground.bottom = HEIGHT
 
 dino = Actor("dino")
 dino.x = 100
-dino.bottom = ground.top
+# charlie needs to adddino.bottom = ground.top
 dino.gravity = 0
 
 cactus = Actor("cactus")

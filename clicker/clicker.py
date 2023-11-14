@@ -1,21 +1,33 @@
 import pgzrun
 
-progress = 0
-add_progress = False
-bar_background = Rect(20, 20, 300, 100)
+
+
 class ProgressBar(Rect):
     def __init__(self, left, top, width, height):
         super().__init__(left, top, width, height)
         self.progress = width
+        self.left = left
+        self.top = top
+        self.background = Rect(left, top, 300, height)
         self.add_progress = False
-bar = ProgressBar(20, 20, 0, 100)
-def draw():
-    screen.draw.filled_rect(bar_background, "gray")
     
-    screen.draw.filled_rect(ProgressBar(20, 20, bar.progress, 100), "red")
+    def draw(self):
+        screen.draw.filled_rect(self.background, "gray")
+        screen.draw.filled_rect(self, "red")
+        
+
+bar = ProgressBar(20, 20, 0, 100)
+
+
+def draw():
+    bar.draw()
+
+
 def on_mouse_down(pos):
-    if bar_background.collidepoint(pos):
+    if bar.background.collidepoint(pos):
         bar.add_progress = True
+
+
 def update():
     
     if bar.add_progress:

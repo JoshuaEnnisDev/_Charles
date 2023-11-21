@@ -2,7 +2,7 @@ import pgzrun
 
 
 class ProgressBar(Rect):
-    def __init__(self, title, left, top, width, height):
+    def __init__(self, title, left, top, width=0, height=100):
         super().__init__(left, top, width, height, anchor=("center", "center"))
         self.progress = width
         self.left = left
@@ -12,7 +12,6 @@ class ProgressBar(Rect):
         self.title = title
         
     def draw(self):
-        
         screen.draw.filled_rect(self.background, "gray")
         screen.draw.filled_rect(Rect(self.left, self.top, self.progress, self.height), "red")
         screen.draw.text(
@@ -32,10 +31,10 @@ class ProgressBar(Rect):
             if self.progress >= 300:
                 self.progress = 0
                 self.add_progress = False
-        
 
-bar = ProgressBar("Life", 20, 50, 0, 100)
-bar2 = ProgressBar("Magicstuff", 20, 250, 0, 100)
+
+bar = ProgressBar("Life", 20, 50)
+bar2 = ProgressBar("Magicstuff", 20, 250)
 
 bars = []
 bars.append(bar)
@@ -53,8 +52,8 @@ def on_mouse_down(pos):
 
 
 def update():
-    bar.update_progress()
-    bar2.update_progress()
+    for bar in bars:
+        bar.update_progress()
 
 
 pgzrun.go()

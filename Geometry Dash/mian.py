@@ -8,6 +8,7 @@ player = Rect(100, HEIGHT - 32, 32, 32)
 gravity = 0
 dy = 0
 
+
 def create_platform(x, y, width):
     rect = Rect(x, y, width, 40)
     platforms.append(rect)
@@ -20,8 +21,6 @@ first_platform = platforms[0]
 last_platform = platforms[0]
 
 
-
-
 def create_platforms():
     # index = 1
     # while len(platforms) < num_platforms:
@@ -29,7 +28,7 @@ def create_platforms():
     create_platform(platforms[len(platforms) - 1].right + 100, random.randint(3, 4) * 100, 100)
 
 
-def move_platforms(dt):
+def move_platforms( ):
         global first_platform
         global last_platform
 
@@ -44,7 +43,7 @@ def move_platforms(dt):
             first_platform = platforms[0]
             
         for platform in platforms:
-            platform.x -= 100 * dt
+            platform.x -= 5
 
 
 def jump():
@@ -61,7 +60,7 @@ def draw():
         screen.draw.filled_rect(platform, "green")
 
 
-def update(dt):
+def update():
     global gravity
     dy = 0
    # player.bottom = min(player.bottom, HEIGHT - 40)
@@ -69,7 +68,7 @@ def update(dt):
     
     gravity += 1
     dy += gravity
-    move_platforms(dt)
+    move_platforms()
    
     for platform in platforms:
         if (platform).colliderect(player.left, player.top + dy, player.width, player.height):
@@ -77,7 +76,7 @@ def update(dt):
                 dy = platform.top - player.bottom
                 gravity = 0
     
-    player.y += dy * dt
+    player.y += dy
     
 
 

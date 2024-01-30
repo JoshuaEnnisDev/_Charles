@@ -15,6 +15,7 @@ age = 8
 
 chatbot_name = "Kemo"
 
+
 banner = """
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @                                       @
@@ -27,3 +28,7 @@ print(banner)
 print("Hello my name is " + chatbot_name)
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
+human_name = input("What is your name? ")
+
+print(f"Nice to meet you {human_name}")
+print("👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻")
